@@ -14,7 +14,7 @@ import PageTitle from '../Common/PageTitle';
 
 const messages = defineMessages({
   signin: 'Sign In',
-  signinheader: 'Sign in to continue',
+  signinheader: '',
   signinwithplex: 'Use your Plex account',
   signinwithoverseerr: 'Use your {applicationTitle} account',
 });

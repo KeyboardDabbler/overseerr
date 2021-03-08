@@ -9,6 +9,8 @@ import useClickOutside from '../../../hooks/useClickOutside';
 const messages = defineMessages({
   dashboard: 'Discover',
   requests: 'Requests',
+  webPlayer: 'Web Player',
+  support: 'Support',
   users: 'Users',
   settings: 'Settings',
 });
@@ -69,6 +71,54 @@ const SidebarLinks: SidebarLinkProps[] = [
       </svg>
     ),
     activeRegExp: /^\/requests/,
+  },
+  {
+    href: 'https://plex.gbstreams.co.uk/',
+    messagesKey: 'webPlayer',
+    svgIcon: (
+      <svg
+        className="w-6 h-6 mr-3 text-gray-300 transition duration-150 ease-in-out group-hover:text-gray-100 group-focus:text-gray-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    activeRegExp: /^\/webPlayer/,
+  },
+  {
+    href: 'https://gbstreams.co.uk/help/request.html',
+    messagesKey: 'support',
+    svgIcon: (
+      <svg
+        className="w-6 h-6 mr-3 text-gray-300 transition duration-150 ease-in-out group-hover:text-gray-100 group-focus:text-gray-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    ),
+    activeRegExp: /^\/support/,
   },
   {
     href: '/users',
