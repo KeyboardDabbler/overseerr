@@ -123,7 +123,6 @@ const CoreApp: Omit<NextAppComponentType, 'origGetInitialProps'> = ({
                     content="width=device-width, initial-scale=1"
                   />
                 </Head>
-                <StatusChecker />
                 <UserContext initialUser={user}>{component}</UserContext>
               </ToastProvider>
             </InteractionProvider>
