@@ -31,7 +31,7 @@ const isMovie = (movie: MovieDetails | TvDetails): movie is MovieDetails => {
 
 const RequestCardPlaceholder: React.FC = () => {
   return (
-    <div className="relative p-4 bg-gray-700 rounded-lg w-72 sm:w-96 animate-pulse">
+    <div className="relative p-4 bg-gray-700 rounded-xl w-72 sm:w-96 animate-pulse">
       <div className="w-20 sm:w-28">
         <div className="w-full" style={{ paddingBottom: '150%' }} />
       </div>
@@ -98,9 +98,9 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onTitleData }) => {
 
   return (
     <div
-      className="relative flex p-4 text-gray-400 bg-gray-800 bg-center bg-cover rounded-md w-72 sm:w-96"
+      className="relative flex p-4 text-gray-400 bg-gray-700 bg-center bg-cover shadow rounded-xl w-72 sm:w-96 ring-1 ring-gray-700"
       style={{
-        backgroundImage: `linear-gradient(180deg, rgba(17, 24, 39, 0.47) 0%, rgba(17, 24, 39, 1) 100%), url(//image.tmdb.org/t/p/w1920_and_h800_multi_faces/${title.backdropPath})`,
+        backgroundImage: `linear-gradient(135deg, rgba(17, 24, 39, 0.47) 0%, rgba(17, 24, 39, 1) 75%), url(//image.tmdb.org/t/p/w1920_and_h800_multi_faces/${title.backdropPath})`,
       }}
     >
       <div className="flex flex-col flex-1 min-w-0 pr-4">
@@ -129,8 +129,30 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onTitleData }) => {
             </a>
           </Link>
         </div>
-        <div className="card-field">
-          <span className="card-field-name">
+        {request.seasons.length > 0 && (
+          <div className="sm:flex items-center my-0.5 sm:my-1 text-sm hidden">
+            <span className="mr-2 font-medium">
+              {intl.formatMessage(messages.seasons)}
+            </span>
+            {!isMovie(title) &&
+            title.seasons.filter((season) => season.seasonNumber !== 0)
+              .length === request.seasons.length ? (
+              <span className="mr-2 uppercase">
+                <Badge>{intl.formatMessage(messages.all)}</Badge>
+              </span>
+            ) : (
+              <div className="overflow-x-scroll hide-scrollbar">
+                {request.seasons.map((season) => (
+                  <span key={`season-${season.id}`} className="mr-2">
+                    <Badge>{season.seasonNumber}</Badge>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+        <div className="flex items-center mt-2 text-sm sm:mt-1">
+          <span className="hidden mr-2 font-medium sm:block">
             {intl.formatMessage(messages.status)}
           </span>
           {requestData.media[requestData.is4k ? 'status4k' : 'status'] ===
@@ -157,28 +179,6 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, onTitleData }) => {
             />
           )}
         </div>
-        {request.seasons.length > 0 && (
-          <div className="card-field">
-            <span className="card-field-name">
-              {intl.formatMessage(messages.seasons)}
-            </span>
-            {!isMovie(title) &&
-            title.seasons.filter((season) => season.seasonNumber !== 0)
-              .length === request.seasons.length ? (
-              <span className="mr-2 uppercase">
-                <Badge>{intl.formatMessage(messages.all)}</Badge>
-              </span>
-            ) : (
-              <div className="overflow-x-scroll hide-scrollbar">
-                {request.seasons.map((season) => (
-                  <span key={`season-${season.id}`} className="mr-2">
-                    <Badge>{season.seasonNumber}</Badge>
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
         {requestData.status === MediaRequestStatus.PENDING &&
           hasPermission(Permission.MANAGE_REQUESTS) && (
             <div className="flex items-end flex-1">

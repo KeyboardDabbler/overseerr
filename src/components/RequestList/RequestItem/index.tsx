@@ -103,7 +103,7 @@ const RequestItem: React.FC<RequestItemProps> = ({
   if (!title && !error) {
     return (
       <div
-        className="w-full h-64 bg-gray-800 rounded-md lg:h-32 animate-pulse"
+        className="w-full h-64 bg-gray-800 rounded-xl lg:h-32 animate-pulse"
         ref={ref}
       />
     );
@@ -112,7 +112,7 @@ const RequestItem: React.FC<RequestItemProps> = ({
   if (!title || !requestData) {
     return (
       <div
-        className="w-full h-64 bg-gray-800 rounded-md lg:h-32 animate-pulse"
+        className="w-full h-64 bg-gray-800 rounded-xl lg:h-32 animate-pulse"
         ref={ref}
       />
     );
@@ -132,7 +132,7 @@ const RequestItem: React.FC<RequestItemProps> = ({
           setShowEditModal(false);
         }}
       />
-      <div className="relative flex flex-col justify-between w-full py-4 overflow-hidden text-gray-400 bg-gray-800 rounded-md shadow-md lg:h-32 lg:flex-row">
+      <div className="relative flex flex-col justify-between w-full py-4 overflow-hidden text-gray-400 bg-gray-800 shadow-md ring-1 ring-gray-700 rounded-xl lg:h-32 lg:flex-row">
         <div
           className="absolute inset-0 z-0 w-full bg-center bg-cover lg:w-2/3"
           style={{
@@ -214,7 +214,7 @@ const RequestItem: React.FC<RequestItemProps> = ({
               )}
             </div>
           </div>
-          <div className="z-10 flex flex-col justify-between w-full pr-4 mt-4 ml-2 text-sm sm:mt-0 lg:flex-1 lg:pr-0">
+          <div className="z-10 flex flex-col justify-between w-full pr-4 mt-4 ml-4 text-sm sm:ml-2 sm:mt-0 lg:flex-1 lg:pr-0">
             <div className="card-field">
               <span className="card-field-name">
                 {intl.formatMessage(messages.status)}
